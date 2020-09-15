@@ -1,0 +1,38 @@
+{
+  "name": "yugioh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/src/app.js",
+  "bin": {
+    "yugioh": "server.js"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@hapi/joi-date": "^2.0.1",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.0",
+    "mongodb": "^3.5.5",
+    "node-geocoder": "^3.26.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "xmlhttprequest": "^1.8.0",
+    "fs": "^0.0.1-security",
+    "line-reader": "^0.4.0"
+  
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/server.js",
+    "dev": "nodemon ./bin/server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

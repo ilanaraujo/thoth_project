@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Yu-Gi-Oh</title>
+</head>
+
+<body onload="initGame()">
+    <h2 id='turno'></h2>
+    <p id=field></p>
+    <p id="hand"></p>
+    <script>
+        function getCards() {
+            return new Promise(function (resolve, reject) {
+
+                var xhr = new XMLHttpRequest();
+                var url = '/api/card/data'
+                xhr.open("GET", url, true)
+                xhr.onload = function (e) {
+                    var cards = JSON.parse(xhr.response).data
+
+                    resolve(cards)
+
+
+                }
+                xhr.send();
+            })
+        }
+
+        getCards()
+
+            .then(function (cards) {
+                for (i = 0; i < 40; i++) {
+                    var image = new Image();
+                    image.src = cards[i].Image
+                    document.body.appendChild(image);
+                }
+            })
+    </script>
+    <div>
+        <form>
+            <input type="text" id="input">
+            <br><br>
+            <input type="button" value="Set" onclick="mainPhase1()">
+            <input type="button" value="Normal Summon" onclick="mainPhase1()">
+        </form>
+        <br>
+        <button id='draw' style="color:gray" onclick="draw(deck)">Draw Phase</button>
+        <button id='main1' style="color:black">Main Phase 1</button>
+        <button id='battle' style="color:black" onclick="battlePhase()">Battle Phase</button>
+        <button id='main2' style="color:black" onclick="mainPhase2()">Main Phase 2</button>
+        <button id='end' style="color:black" onclick="endPhase()">End Phase</button>
+    </div>
+</body>
+
+</html>
+<script src="shuffle.js"></script>
